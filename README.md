@@ -2,6 +2,8 @@
 Api-Kur ilişkisini koruyarak sıralama yapar.<br>
 Web arayüzünde en uygun döviz kurlarını ve sıralanmış listesini verir.<br>
 Tüm işleyiş repository ve Currency klasörlerinde gerçekleşmektedir.<br>
+Yeni tanımlanacak Apiler 'currency:new-provider' komutu ile 'src/Currency/Provider/Providers' içerisinde otomatik oluşacaktır. Yeni Apinin tanımlaması yapılırken güncelleme hataları meydana gelmemesi için 'ready()' methodu tanımlanmadan yeni Api sisteme dahil edilmiş olmaz.
+
 
 # Commandlar
 -Yeni Api Ekle           => php bin/console currency:new-provider <br>
