@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    <header>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container d-flex justify-content-between">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <strong>{{ title }}</strong>
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="row">
+        <div class="container d-flex justify-content-center bd-highlight mb-3 d-flex align-items-center py-4" >
+
+            <div class="card -0 px-1 mx-2" style="width: 18rem;">
+                <img src="img/usd.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Usd: {{ enUcuzKurlar.usdRate }}TRY</h5>
+                    <p>Provider: <a href="{{ enUcuzKurlar.usdApiUrl }}">{{ enUcuzKurlar.usdApiUrl }}</a></p>
+                    <a href="#usd" class="btn btn-primary">Dolar Karşılaştır</a>
+                </div>
+            </div>
+            <div class="card -0 px-1 mx-2" style="width: 18rem;">
+                <img src="img/eur.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Eur: {{ enUcuzKurlar.eurRate }}TRY</h5>
+                    <p>Provider: <a href="{{ enUcuzKurlar.eurApiUrl }}">{{ enUcuzKurlar.eurApiUrl }}</a></p>
+                    <a href="#eur" class="btn btn-primary">Euro Karşılaştır</a>
+                </div>
+            </div>
+            <div class="card -0 px-1 mx-2" style="width: 18rem;">
+                <img src="img/gbp.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Gbp: {{ enUcuzKurlar.gbpRate }}TRY</h5>
+                    <p>Provider: <a href="{{ enUcuzKurlar.gbpApiUrl }}">{{ enUcuzKurlar.gbpApiUrl }}</a></p>
+                    <a href="#gbp" class="btn btn-primary">Sterlin Karşılaştır</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% for key, siralama in kurSiramalari %}
+    {% set i = 1 %}
+
+    <div class="row py-5" id="{{ key }}">
+        <div class="container">
+
+            <h2 class="mt-2 p-2 text-light bg-dark">{{ key|upper }} Karşılaştır</u></h2>
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col" style="width: 10%"></th>
+                    <th scope="col" style="width: 70%">Provider</th>
+                    <th scope="col" style="width: 20%">Kur</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for provider in siralama %}
+                <tr>
+                    <th scope="row">{{ i }}</th>
+                    <td>{{ provider.apiUrl }}</td>
+                    <td>{{ provider.rate }}</td>
+                </tr>
+                    {% set i = i+ 1 %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endfor %}
+
+
+
+{% endblock %}
+
+
